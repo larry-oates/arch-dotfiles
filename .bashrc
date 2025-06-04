@@ -37,3 +37,5 @@ if [ -f ~/.bashrc_custom ]; then
 fi
 
 eval "$(thefuck --alias)"
+eval "$(ssh-agent)"
+eval "$(zoxide init bash)"
