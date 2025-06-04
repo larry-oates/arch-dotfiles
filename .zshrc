@@ -35,6 +35,4 @@ if [ -f ~/.zshrc_custom ]; then
     source ~/.zshrc_custom
 fi
 
-eval "$(thefuck --alias)"
-eval "$(ssh-agent)"
-eval "$(zoxide init zsh)"
+
