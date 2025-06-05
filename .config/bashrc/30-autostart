@@ -7,7 +7,7 @@ eval "$(zoxide init bash)"
 # Fastfetch
 # -----------------------------------------------------
 if [[ $(tty) == *"pts"* ]]; then
-    fastfetch --config examples/13
+    fastfetch --config examples/5
 else
     echo
     if [ -f /bin/qtile ]; then
