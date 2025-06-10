@@ -1,7 +1,7 @@
 # -----------------------------------------------------
 # CUSTOMIZATION
 # -----------------------------------------------------
-POSH=agnoster
+POSH=aliens
 
 # -----------------------------------------------------
 # oh-myzsh themes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -22,6 +22,16 @@ plugins=(
     copyfile
     copybuffer
     dirhistory
+    safe-paste
+    ssh
+    ssh-agent
+    starship
+    zoxide
+    command-not-found
+    fzf
+    sudo
+    systemd
+    thefuck
 )
 
 # Set-up oh-my-zsh
@@ -42,7 +52,7 @@ setopt appendhistory
 # Prompt
 # -----------------------------------------------------
 # eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/EDM115-newline.omp.json)"
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/EDM115-newline.omp.json)"
 
 # Shipped Theme
-# eval "$(oh-my-posh init zsh --config /usr/share/oh-my-posh/themes/agnoster.omp.json)"
+eval "$(oh-my-posh init zsh --config /usr/share/oh-my-posh/themes/agnoster.omp.json)"
