@@ -1,6 +1,7 @@
 {
     "version": "2.1.1",
     "autoload": {
-        "Dell Dell Wired Multimedia Keyboard": "Capslock_-_Esc"
+        "Dell Dell Wired Multimedia Keyboard": "Capslock_-_Esc",
+        "Compx Keyboard": "Caps"
     }
 }
