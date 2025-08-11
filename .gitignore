@@ -1,1 +1,3 @@
 .config/ml4w/cache
+.config/ml4w/settings/waybar-disabled
+.config/ml4w/settings/waybar-theme.sh
