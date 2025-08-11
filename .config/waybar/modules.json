@@ -14,10 +14,10 @@
 	"hyprland/workspaces": {
 		"format": "{name} {windows}",
 		"workspace-taskbar": {
-			"enable": true
+			"enable": true,
+			"ignore-list": ["com.leafman.doomfirewallpaper"]
 		},
 		"move-to-monitor": true,
-
 		},
 
 
