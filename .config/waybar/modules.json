@@ -15,7 +15,8 @@
 		"format": "{name} {windows}",
 		"workspace-taskbar": {
 			"enable": true,
-			"ignore-list": ["com.leafman.doomfirewallpaper"]
+			"ignore-list": ["com.leafman.doomfirewallpaper"],
+			"icon-size":22,
 		},
 		"move-to-monitor": true,
 		},
