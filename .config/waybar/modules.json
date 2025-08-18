@@ -31,6 +31,7 @@
         "on-click": "activate",
         "on-click-middle": "close",
         "ignore-list": [
+           "ghostty"
         ],
         "app_ids-mapping": {
             "firefoxdeveloperedition": "firefox-developer-edition"
@@ -189,7 +190,6 @@
     // Clock
     "clock": {
         "format": "{:%H:%M %a}",
-        "on-click": "ags -t calendar",
         "tooltip": false
     },
 
