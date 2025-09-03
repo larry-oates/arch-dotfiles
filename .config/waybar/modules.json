@@ -189,7 +189,7 @@
 
     // Clock
     "clock": {
-        "format": "{:%H:%M %a}",
+        "format": "{:%I:%M %p %a %d/%m}",
         "tooltip": false
     },
 
