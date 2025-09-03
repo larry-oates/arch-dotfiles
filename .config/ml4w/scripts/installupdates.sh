@@ -50,7 +50,7 @@ _isInstalled() {
 # Check if platform is supported
 case $install_platform in
     arch)
-        aur_helper="$(cat ~/.config/ml4w/settings/aur.sh)"
+        aur_helper="$(cat ~/.config/ml4w/settings/aur.sh)" # yay
 
         if [[ $(_isInstalled "timeshift") == "0" ]]; then
             echo
@@ -71,7 +71,7 @@ case $install_platform in
             echo
         fi
 
-        $aur_helper
+        $aur_helper --noconfirm
 
         if [[ $(_isInstalled "flatpak") == "0" ]]; then
             flatpak upgrade
