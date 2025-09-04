@@ -74,7 +74,7 @@ case $install_platform in
         $aur_helper --noconfirm
 
         if [[ $(_isInstalled "flatpak") == "0" ]]; then
-            flatpak upgrade
+            flatpak upgrade -y
         fi
         ;;
     fedora)
