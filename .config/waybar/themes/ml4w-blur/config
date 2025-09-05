@@ -26,11 +26,9 @@
     // Modules Left
     "modules-left": [
 	"custom/appmenu",
-        "group/links",
-	//"wlr/taskbar",
-        "group/quicklinks",
+        "custom/browser",
+        "custom/filemanager",
 	"hyprland/window",
-        "custom/empty"
     ],
 
     // Modules Center
