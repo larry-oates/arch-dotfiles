@@ -51,3 +51,8 @@ desc = "Cd to ~/Downloads"
 on   = [ "g", "c" ]
 run  = "cd ~/dotfiles/"
 desc = "Cd to ~/dotfile"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "p" ]
+run  = "cd ~/Pictures"
+desc = "Cd to ~/Pictures"
