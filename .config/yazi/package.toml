@@ -1,12 +1,27 @@
 [[plugin.deps]]
-use = "yazi-rs/plugins:smart-enter"
-rev = "e95c7b3"
-hash = "56fdabc96fc1f4d53c96eb884b02a5be"
-
-[[plugin.deps]]
 use = "dedukun/bookmarks"
 rev = "9ef1254"
 hash = "92fbb5483657fa7976cdf4e0104e18e0"
+
+[[plugin.deps]]
+use = "pirafrank/what-size"
+rev = "d896656"
+hash = "62251f94eb67648d42cdfcfb8be0fad2"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "8f37dc5"
+hash = "ee71543790f0ce3951161045a3787abd"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "d1c8baa"
+hash = "bcda8eeb3f4013bae156aecabfc745e8"
+
+[[plugin.deps]]
+use = "ourongxing/fast-enter"
+rev = "738356f"
+hash = "b209b5db91df69bdc6a4656cb8276cd9"
 
 [flavor]
 deps = []

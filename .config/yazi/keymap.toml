@@ -1,17 +1,17 @@
-# Smart-enter keybinds
+# fast-enter keybinds
 [[mgr.prepend_keymap]]
 on   = "<Right>"
-run  = "plugin smart-enter"
+run  = "plugin fast-enter"
 desc = "Enter the child directory, or open the file"
 
 [[mgr.prepend_keymap]]
 on   = "l"
-run  = "plugin smart-enter"
+run  = "plugin fast-enter"
 desc = "Enter the child directory, or open the file"
 
 [[mgr.prepend_keymap]]
 on   = "<Enter>"
-run  = "plugin smart-enter"
+run  = "plugin fast-enter"
 desc = "Enter the child directory, or open the file"
 
 
@@ -56,3 +56,21 @@ desc = "Cd to ~/dotfile"
 on   = [ "g", "p" ]
 run  = "cd ~/Pictures"
 desc = "Cd to ~/Pictures"
+
+# What-size plugin keybinds
+[[mgr.prepend_keymap]]
+on = [ ".", "s" ]
+run  = "plugin what-size"
+desc = "Calc size of selection or cwd" 
+
+# Lazy-git plugin keybinds
+[[mgr.prepend_keymap]]
+on   = [ "g", "i" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
+
+# Smart-filter plugin keybinds
+[[mgr.prepend_keymap]]
+on   = "f"
+run  = "plugin smart-filter"
+desc = "Smart filter"
