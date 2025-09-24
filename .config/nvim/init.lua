@@ -219,6 +219,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+
+local rel_insert_augroup = vim.api.nvim_create_augroup('insert-mode-relative', { clear = true })
+
+vim.api.nvim_create_autocmd('InsertLeave', {
+  desc = 'Set norelativenumber on insert mode leave',
+  group = rel_insert_augroup,
+  callback = function()
+    vim.o.relativenumber = true
+  end,
+})
+
+vim.api.nvim_create_autocmd('InsertEnter', {
+  desc = 'Set norelativenumber on insert mode enter',
+  group = rel_insert_augroup,
+  callback = function()
+    vim.o.relativenumber = false
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
