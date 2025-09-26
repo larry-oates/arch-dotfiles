@@ -129,7 +129,7 @@
     // Filemanager Launcher
     "custom/filemanager": {
         "format": "",
-        "on-click": "dolphin",
+        "on-click": "~/.config/ml4w/settings/filemanager.sh",
         "tooltip": false
     },
 
