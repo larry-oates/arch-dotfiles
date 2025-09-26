@@ -39,18 +39,17 @@
     // Modules Right    
     "modules-right": [
         "custom/updates",
+  	"custom/ddc_brightness",
         "pulseaudio",
-//"backlight",
         "bluetooth",
-"network",
+        "network",
         "battery", 
         "power-profiles-daemon",
         "group/hardware",
         "group/tools",
-"tray",
+        "tray",
         "custom/notification",
         "custom/exit",
-        "custom/ml4w-welcome",
         "clock"
     ]
 }
