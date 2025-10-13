@@ -72,6 +72,7 @@ case $install_platform in
         fi
 
         $aur_helper --noconfirm
+	hyprpm update # update hyprland plugins
 
         if [[ $(_isInstalled "flatpak") == "0" ]]; then
             flatpak upgrade -y
