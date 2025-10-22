@@ -9,6 +9,7 @@
 sleep 1
 clear
 install_platform="$(cat ~/.config/ml4w/settings/platform.sh)"
+SNAPSHOT_DIR="/home/timeshift/snapshots"
 figlet -f smslant "Updates"
 echo
 
@@ -57,10 +58,30 @@ case $install_platform in
             if gum confirm "DO YOU WANT TO CREATE A SNAPSHOT?"; then
                 echo
                 c=$(gum input --placeholder "Enter a comment for the snapshot...")
-                sudo timeshift --create --comments "$c"
-                sudo timeshift --list
-                sudo grub-mkconfig -o /boot/grub/grub.cfg
-                echo ":: DONE. Snapshot $c created!"
+
+		sudo timeshift --create --comments "$c"
+                echo ":: Snapshot $c created!"
+		snapshot_list=$(sudo timeshift --list --scripted 2>/dev/null | rg "^\s*\d+\s+>\s+(\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2})" -r '$1')
+		snapshot_count=$(echo "$snapshot_list" | rg -c "^\d{4}")
+		if [ "$snapshot_count" -ge 2 ]; then
+		    oldest_snapshot=$(echo "$snapshot_list" | sort | head -n 1 | awk '{print $1}')
+		    if [ -n "$oldest_snapshot" ]; then
+			echo "Found $snapshot_count snapshots"
+			echo "Removing oldest snapshot: $oldest_snapshot"
+			sudo timeshift --delete --snapshot "$oldest_snapshot"
+			
+			if [ $? -eq 0 ]; then
+			    echo "Snapshot removed successfully"
+			else
+			    echo "Error: Failed to remove snapshot"
+			fi
+		    else
+			echo "No snapshots found to remove - check nameing convention"
+		    fi
+		else
+		    echo "Only $snapshot_count snapshot(s) found. Need at least 2 snapshots to remove the oldest."
+		fi
+		echo "DONE - Snapshots"
                 echo
             elif [ $? -eq 130 ]; then
                 echo ":: Snapshot skipped."
