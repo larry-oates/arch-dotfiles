@@ -92,7 +92,11 @@ case $install_platform in
             echo
         fi
 
-        $aur_helper --noconfirm
+	aur_helper_flags=""
+	if gum confirm "DO YOU WANT TO ADD --noconfirm"; then 
+	    aur_helper_flags="--noconfirm"
+	fi
+	$aur_helper $aur_helper_flags
 	hyprpm update # update hyprland plugins
 
         if [[ $(_isInstalled "flatpak") == "0" ]]; then
