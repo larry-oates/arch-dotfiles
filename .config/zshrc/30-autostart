@@ -42,3 +42,14 @@ if (( RANDOM % 50 == 0 )); then
         xcowsay -r 100 "Farting' Stinkin' Rachel" &
     fi    
 fi
+ 
+
+# -----------------------------------------------------
+# Fastfetch
+# -----------------------------------------------------
+FLAG_FILE="/tmp/.first_terminal_flag_$USER"
+
+if [ ! -f "$FLAG_FILE" ]; then
+    touch "$FLAG_FILE"
+    fastfetch --config examples/24
+fi
