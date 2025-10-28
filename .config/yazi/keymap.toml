@@ -74,3 +74,8 @@ desc = "run lazygit"
 on   = "f"
 run  = "plugin smart-filter"
 desc = "Smart filter"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "l" ]
+run  = "plugin git-open"
+desc = "Open git remote URL in browser"
