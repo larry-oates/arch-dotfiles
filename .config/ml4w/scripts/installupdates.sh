@@ -123,5 +123,19 @@ echo ":: Update complete"
 echo
 echo
 
-echo "Press [ENTER] to close."
-read
+echo "Press R to reboot the system, or [Enter] to close..."
+read -n 1 -r input
+
+if [[ $input =~ ^[Rr]$ ]]; then
+    echo -e "\nRebooting in 2 seconds... Press any key to cancel!"
+    
+    if read -n 1 -t 2 -s -r; then
+        echo -e "Reboot cancelled."
+    else
+	sudo -v
+        echo -e "Rebooting system..."
+        reboot
+    fi
+else
+    echo -e "\nReboot cancelled."
+fi
