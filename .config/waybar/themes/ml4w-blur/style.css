@@ -525,3 +525,17 @@ window#waybar.empty #window {
     background-color: #f1c40f;
     color: #000000;
 }
+
+/* -----------------------------------------------------
+ w Spotify
+ * ----------------------------------------------------- */
+
+#custom-spotify {
+    background-color: @backgroundlight;
+    font-size: 16px;
+    color: @textcolor2;
+    border-radius: 3px;
+    padding: 2px 10px 0px 10px;
+    margin: 4px 15px 4px 0px;
+    opacity:0.8;
+}
