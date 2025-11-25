@@ -25,8 +25,8 @@ hash = "b209b5db91df69bdc6a4656cb8276cd9"
 
 [[plugin.deps]]
 use = "larry-oates/open-git-remote"
-rev = "37abab1"
-hash = "bc1a04b647fbb5c49d6b524226ddc542"
+rev = "95b3043"
+hash = "8d17dcc063217b558a08ed8bb5e9e8ad"
 
 [flavor]
 deps = []
