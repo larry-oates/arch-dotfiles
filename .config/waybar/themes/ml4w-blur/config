@@ -44,7 +44,6 @@
         "pulseaudio",
         "bluetooth",
         "network",
-        "power-profiles-daemon",
         "group/hardware",
         "tray",
         "custom/notification",
