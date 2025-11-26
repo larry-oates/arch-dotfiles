@@ -196,7 +196,7 @@ window#waybar.empty #window {
 
 #clock {
     padding: 1px 10px 0;
-    margin: 4px 15px 4px 10px;
+    margin: 4px 15px 4px 6px;
 }
 
 /* -----------------------------------------------------
@@ -278,37 +278,31 @@ window#waybar.empty #window {
     opacity: 0.8;
 }
 
-/* -----------------------------------------------------
- * Idle Inhibitor
- * ----------------------------------------------------- */
-
-#idle_inhibitor {
-    margin-right: 17px;
-    font-size: 20px;
-    font-weight: bold;
-    opacity: 0.8;
-    color: @iconcolor;
-}
-
-#idle_inhibitor.activated {
-    margin-right: 15px;
-    color: #dc2f2f;
-}
 
 /* -----------------------------------------------------
  * Custom Modules (Icon Only)
  * ----------------------------------------------------- */
 
+#idle_inhibitor,
 #custom-notification,
 #custom-exit,
 #power-profiles-daemon {
     padding: 0;
-    margin-right: 13px;
+    margin-right: 15px;
     font-size: 20px;
     color: @iconcolor;
     opacity: 0.8;
 }
 
+
+/* -----------------------------------------------------
+ * Idle Inhibitor
+ * ----------------------------------------------------- */
+
+#idle_inhibitor.activated {
+    margin-right: 4px;
+    color: #dc2f2f;
+}
 /* -----------------------------------------------------
  * Hardware Group
  * ----------------------------------------------------- */
@@ -324,7 +318,7 @@ window#waybar.empty #window {
 }
 
 #language {
-    margin-right: 10px;
+    margin-right: 16px;
 }
 
 /* -----------------------------------------------------
@@ -386,7 +380,8 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #tray {
-    padding: 0 15px 0 0;
+    padding: 0;
+    margin-right: 8px;
     color: @textcolor3;
 }
 

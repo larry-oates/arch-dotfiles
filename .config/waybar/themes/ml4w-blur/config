@@ -44,13 +44,12 @@
         "pulseaudio",
         "bluetooth",
         "network",
-        "battery", 
         "power-profiles-daemon",
         "group/hardware",
-        "group/tools",
         "tray",
         "custom/notification",
         "custom/exit",
+	"idle_inhibitor",
         "clock"
     ]
 }
