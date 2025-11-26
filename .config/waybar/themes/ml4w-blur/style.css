@@ -42,7 +42,7 @@ window#waybar {
 
 #workspaces {
     background: @workspacesbackground1;
-    margin: 4px 1px;
+    margin: 4px 8px;
     padding: 0;
     border-radius: 3px;
     font-weight: bold;
@@ -196,7 +196,8 @@ window#waybar.empty #window {
 
 #clock {
     padding: 1px 10px 0;
-    margin: 4px 15px 4px 6px;
+    margin:  4px 15px 4px 6px;
+
 }
 
 /* -----------------------------------------------------
@@ -288,7 +289,7 @@ window#waybar.empty #window {
 #custom-exit,
 #power-profiles-daemon {
     padding: 0;
-    margin-right: 15px;
+    margin-right: 16px;
     font-size: 20px;
     color: @iconcolor;
     opacity: 0.8;
@@ -299,8 +300,12 @@ window#waybar.empty #window {
  * Idle Inhibitor
  * ----------------------------------------------------- */
 
+#idle_inhibitor {
+    margin-left: 4px;
+}
 #idle_inhibitor.activated {
-    margin-right: 4px;
+    margin-left: 1px;
+    margin-right: 8px;
     color: #dc2f2f;
 }
 /* -----------------------------------------------------
@@ -318,7 +323,7 @@ window#waybar.empty #window {
 }
 
 #language {
-    margin-right: 16px;
+    margin-right: 38px;
 }
 
 /* -----------------------------------------------------
