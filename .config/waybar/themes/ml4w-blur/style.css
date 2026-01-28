@@ -406,3 +406,19 @@ window#waybar.empty #window {
     background-color: #f1c40f;
     color: #000000;
 }
+
+/* -----------------------------------------------------
+ w waybar-lyrics
+ * ----------------------------------------------------- */
+
+#custom-lyrics {
+	background-color: @blur_background;
+	color: @textcolor1;
+	margin: 0 10px;
+	padding: 0px;
+	font-size: 14px;
+}
+
+#custom-lyrics.paused {
+	color: #aaaaaa; /* Set custom color when paused */
+}

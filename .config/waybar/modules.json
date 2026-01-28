@@ -373,5 +373,26 @@
     "on-click": "playerctl play-pause",
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous"
-},
+
+    },
+
+ 
+    // waybar-lyrics
+	"custom/lyrics": {
+	    "return-type": "json",
+	    "format": "{icon}  {0}",
+	    "hide-empty-text": true,
+	    "format-icons": {
+	      "playing": "",
+	      "paused": "",
+	      "lyric": "",
+	      "music": "󰝚",
+	      "no_lyric": "",
+	      "getting": "",
+	    },
+	    "exec-if": "which waybar-lyric",
+	    "exec": "waybar-lyric --quiet ",
+	    "on-click": "hyprctl dispatch focuswindow class:^spotify$",
+	  },
 }
+
