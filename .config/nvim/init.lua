@@ -1,4 +1,4 @@
---[[
+--[[require('Comment').setup()
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -236,6 +236,17 @@ vim.api.nvim_create_autocmd('InsertEnter', {
     vim.o.relativenumber = false
   end,
 })
+
+-- vim.g.mapleader = " "
+
+-- Add a blank line BELOW/ABOVE without leaving Normal mode
+-- Uses a mark 'z' to keep your cursor from moving
+vim.keymap.set('n', 'o', 'mzo<Esc>`z', { desc = 'Blank line below (Stay in Normal)' })
+vim.keymap.set('n', 'O', 'mzO<Esc>`z', { desc = 'Blank line above (Stay in Normal)' })
+
+-- Original behavior (Enter Insert mode) using Leader
+vim.keymap.set('n', '<leader>o', 'o', { desc = 'Insert mode newline below' })
+vim.keymap.set('n', '<leader>O', 'O', { desc = 'Insert mode newline above' })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
