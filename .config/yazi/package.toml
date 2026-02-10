@@ -15,7 +15,7 @@ hash = "ab2e66065a94cca4886b303518e44bd8"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "57f1863"
+rev = "88990a6"
 hash = "407d19bc4fb46eff5fa8ff8337644847"
 
 [[plugin.deps]]
@@ -25,8 +25,8 @@ hash = "7ac02a3fa73cd734ddf4ac85af4c0507"
 
 [[plugin.deps]]
 use = "larry-oates/open-git-remote"
-rev = "95b3043"
-hash = "8d17dcc063217b558a08ed8bb5e9e8ad"
+rev = "4be9593"
+hash = "96b0a46969d2b48a7f8ef0f635b13d4a"
 
 [flavor]
 deps = []
