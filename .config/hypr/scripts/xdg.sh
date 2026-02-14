@@ -9,7 +9,7 @@
 # Setup Timers
 _sleep1="0.1"
 _sleep2="0.5"
-_sleep3="2"
+_sleep3="0.5"
 
 # Kill all possible running xdg-desktop-portals
 killall -e xdg-desktop-portal-hyprland
