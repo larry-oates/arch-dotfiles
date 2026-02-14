@@ -1,0 +1,15 @@
+discord
+gamescope
+ghostty
+gimp
+inkscape
+kdenlive
+krita
+nicotine+
+openrazer-daemon
+openrgb
+qbittorrent
+reaper
+rpi-imager
+spotify-launcher
+steam

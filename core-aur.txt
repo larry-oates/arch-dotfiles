@@ -1,7 +1,5 @@
 bibata-cursor-theme-bin
 checkupdates-with-aur
-cowsay-cthulhu
-doomfire-wallpaper-bin
 evremap-git
 fancontrol-gui
 flare-player-bin
@@ -13,11 +11,8 @@ libldap24
 librtmp0
 libva-nvidia-driver-git
 ltspice
-mcpelauncher-ui
-minecraft-launcher
 ml4w-hyprland-git
 mpvpaper
-nautilus-open-any-terminal
 nerdshade
 nmgui-bin
 oh-my-posh-bin
@@ -37,5 +32,4 @@ visual-studio-code-bin
 waybar-lyric
 waypaper
 wlogout
-xcowsay
 yay
