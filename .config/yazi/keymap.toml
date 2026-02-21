@@ -57,7 +57,11 @@ on   = [ "g", "p" ]
 run  = "cd ~/Pictures"
 desc = "Cd to ~/Pictures"
 
-# What-size plugin keybinds
+[[mgr.prepend_keymap]]
+on   = [ "g", "<Backspace>" ]
+run  = "cd --interactive"
+#desc = "Jump interactively"
+
 [[mgr.prepend_keymap]]
 on = [ ".", "s" ]
 run  = "plugin what-size"
