@@ -33,18 +33,6 @@ function y() {
 }
  
 # -----------------------------------------------------
-# Cowsay
-# -----------------------------------------------------
-if (( RANDOM % 50 == 0 )); then
-    if (( RANDOM % 2 == 0 )); then
-        xcowsay -r 100 "Stinkin' Farting' Rachel" &
-    else
-        xcowsay -r 100 "Farting' Stinkin' Rachel" &
-    fi    
-fi
- 
-
-# -----------------------------------------------------
 # Fastfetch
 # -----------------------------------------------------
 FLAG_FILE="/tmp/.first_terminal_flag_$USER"
