@@ -17,7 +17,8 @@ echo
 # Confirm Start
 # ------------------------------------------------------
 
-if gum confirm "DO YOU WANT TO START THE UPDATE NOW?"; then
+update_count=$(checkupdates | wc -l)
+if gum confirm "There are $update_count updates available. DO YOU WANT TO START THE UPDATE NOW?"; then
     echo
     echo ":: Update started."
 elif [ $? -eq 130 ]; then

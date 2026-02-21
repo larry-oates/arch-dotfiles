@@ -51,5 +51,6 @@ FLAG_FILE="/tmp/.first_terminal_flag_$USER"
 
 if [ ! -f "$FLAG_FILE" ]; then
     touch "$FLAG_FILE"
+    upgrade
     fastfetch --config examples/24
 fi
