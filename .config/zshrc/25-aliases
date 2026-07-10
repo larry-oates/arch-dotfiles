@@ -23,6 +23,7 @@ alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
 alias upgrade='~/.config/ml4w/scripts/installupdates.sh'
 alias aur-release='~/.config/ml4w/scripts/update-aur-package.sh'
 alias cope='opencode'
+alias ask='ORIG_DIR=$PWD && TMPDIR=$(mktemp -d) && cd "$TMPDIR" && opencode && cd "$ORIG_DIR" && rm -rf "$TMPDIR"'
 # -----------------------------------------------------
 # ML4W Apps
 # -----------------------------------------------------
