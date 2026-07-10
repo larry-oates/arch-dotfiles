@@ -1,6 +1,7 @@
 {
     "version": "2.2.1",
     "autoload": {
+        "Dell Dell Wired Multimedia Keyboard": "L Super _ -_ L Alt",
         "Xbox Wireless Controller": "guide_button"
     }
 }
