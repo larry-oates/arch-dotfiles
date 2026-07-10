@@ -1,7 +1,6 @@
 {
-    "version": "2.2.0",
+    "version": "2.2.1",
     "autoload": {
-        "Dell Dell Wired Multimedia Keyboard": "Capslock_-_Esc",
-        "Compx Keyboard": "Caps"
+        "Xbox Wireless Controller": "guide_button"
     }
 }

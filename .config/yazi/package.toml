@@ -10,12 +10,12 @@ hash = "57056b9728006881d580ccabe8154a9c"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
-rev = "0e56060"
-hash = "ab2e66065a94cca4886b303518e44bd8"
+rev = "e73fd74"
+hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "b224ddf"
+rev = "598cdb6"
 hash = "c887903a63a2ff520081b6d90a4b3392"
 
 [[plugin.deps]]
@@ -25,8 +25,8 @@ hash = "7ac02a3fa73cd734ddf4ac85af4c0507"
 
 [[plugin.deps]]
 use = "larry-oates/open-git-remote"
-rev = "4a5f0b6"
-hash = "ea87816cbbf6b0e0dfac5bc039aaa983"
+rev = "72158d6"
+hash = "ed359abc14ba915a12e759435ed721ab"
 
 [flavor]
 deps = []

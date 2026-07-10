@@ -1,1 +1,55 @@
-@import 'colors.css';
+window, .background, .solid-csd {
+    background-color: #050505;
+    color: #cccccc;
+}
+
+button {
+    background-color: #1a1a1a;
+    color: #cccccc;
+    border: 1px solid #2d2d2d;
+}
+
+button:hover {
+    background-color: #2d2d2d;
+    border-color: #8b0000;
+}
+
+entry {
+    background-color: #1a1a1a;
+    color: #cccccc;
+    border: 1px solid #2d2d2d;
+}
+
+entry:focus {
+    border-color: #8b0000;
+}
+
+label {
+    color: #cccccc;
+}
+
+scrollbar {
+    background-color: #0a0a0a;
+}
+
+scrollbar slider {
+    background-color: #2d2d2d;
+}
+
+scrollbar slider:hover {
+    background-color: #8b0000;
+}
+
+menu, .menu, .context-menu {
+    background-color: #0a0a0a;
+    color: #cccccc;
+}
+
+menuitem:hover {
+    background-color: #8b0000;
+    color: #ffffff;
+}
+
+window.csd {
+    box-shadow: 0 0 0 1px #1a0a0a;
+}

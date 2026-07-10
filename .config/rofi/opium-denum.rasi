@@ -1,0 +1,136 @@
+* {
+    background: rgba(5, 5, 5, 0.85);
+    background-color: rgba(5, 5, 5, 0.85);
+
+    border: 1px solid;
+    border-color: #1a0a0a;
+    foreground: #cccccc;
+    foreground-alt: #999999;
+    foreground-selected: #ffffff;
+    background-selected: rgba(200, 30, 30, 0.5);
+    border-selected: #ff4444;
+    glow: #ff6666;
+    highlight: #cc0000;
+    text-plain: #aaaaaa;
+    text-alt: #888888;
+    bg0: rgba(5, 5, 5, 0.85);
+    bg1: rgba(10, 10, 10, 0.8);
+}
+
+#window {
+    background-color: @bg0;
+    background-image: url("/home/leafman123/Pictures/denim_opium2_flip.bmp", both);
+    border: 2px solid;
+    border-color: #1a0a0a;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+#mainbox {
+    background-color: transparent;
+    background-image: url("/home/leafman123/Pictures/nirvana.avif", width);
+    border: 0;
+    border-radius: 12px;
+    padding: 16px;
+    children: [inputbar, listview];
+}
+
+#inputbar {
+    background-color: rgba(5, 5, 5, 0.4);
+    border: 1px solid;
+    border-color: #8b0000;
+    border-radius: 8px;
+    padding: 10px 14px 10px 6px;
+    spacing: 10px;
+    text-color: #ffffff;
+    placeholder-color: @foreground-alt;
+    font: "Comic Shanns Nerd Font 16";
+    children: [icon-current-entry, entry, num-filtered-rows];
+}
+
+num-filtered-rows {
+    font: "Comic Shanns Nerd Font 11";
+    padding: 2px 10px;
+    text-color: #666666;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid;
+    border-color: #333333;
+    border-radius: 4px;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    expand: false;
+    width: 80px;
+}
+
+icon-current-entry {
+    size: 28px;
+    padding: 6px;
+    background-color: transparent;
+    border: 0;
+    vertical-align: 0.5;
+}
+
+#entry {
+    padding: 8px 12px;
+    border: 0;
+    text-color: #ffffff;
+    font: "Comic Shanns Nerd Font 16";
+}
+
+#entry.selected {
+    background-color: @background-selected;
+    border: 2px solid;
+    border-color: @border-selected;
+    border-radius: 6px;
+    text-color: @foreground-selected;
+}
+
+element {
+    border-radius: 8px;
+    padding: 4px 6px;
+    background-color: transparent;
+    height: 42px;
+}
+
+element.selected {
+    background-color: @background-selected;
+    border: 2px solid;
+    border-color: @glow;
+    border-radius: 6px;
+    text-color: @foreground-selected;
+}
+
+#listview {
+    background-color: transparent;
+    padding: 6px 0;
+    spacing: 4px;
+    scrollbar: false;
+    border: 0;
+    fixed-height: true;
+    natural-height: 296px;
+}
+
+#element-icon {
+    size: 28px;
+    padding: 6px;
+    border: 1px solid;
+    border-color: #1a0a0a;
+    border-radius: 6px;
+    vertical-align: 0.5;
+}
+
+#element-text {
+    text-color: @foreground;
+    font: "Comic Shanns Nerd Font 12";
+    padding: 4px 8px;
+    margin: 0 0 0 8px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    vertical-align: 0.5;
+}
+
+#element-text.selected {
+    text-color: @foreground-selected;
+    highlight: @glow;
+}

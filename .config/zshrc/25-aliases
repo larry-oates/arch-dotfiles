@@ -5,7 +5,8 @@
 # -----------------------------------------------------
 # General
 # -----------------------------------------------------
-alias c='clear'
+alias c='code'
+alias bat='bat'
 alias nf='fastfetch'
 alias pf='fastfetch'
 alias ff='fastfetch'
@@ -21,6 +22,7 @@ alias wifi='nmtui'
 alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
 alias upgrade='~/.config/ml4w/scripts/installupdates.sh'
 alias aur-release='~/.config/ml4w/scripts/update-aur-package.sh'
+alias cope='opencode'
 # -----------------------------------------------------
 # ML4W Apps
 # -----------------------------------------------------

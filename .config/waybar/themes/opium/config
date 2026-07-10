@@ -1,0 +1,46 @@
+{
+    "layer": "top",
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 0,
+    "height": 30,
+
+    "include": [
+        "~/.config/ml4w/settings/waybar-quicklinks.json",
+        "~/.config/waybar/modules.json"
+    ],
+
+    "custom/appmenu": {
+        "format": "Apps",
+        "on-click": "wofi --show drun",
+        "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
+        "tooltip": false
+    },
+
+    "modules-left": [
+        "custom/appmenu",
+        "custom/browser",
+        "custom/filemanager",
+        "hyprland/window",
+        "custom/lyrics"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "custom/updates",
+        "custom/spotify",
+        "pulseaudio",
+        "bluetooth",
+        "network",
+        "group/hardware",
+        "tray",
+        "custom/exit",
+        "idle_inhibitor",
+        "clock"
+    ]
+}

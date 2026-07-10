@@ -108,6 +108,7 @@ binds {
     Mod+Tab { focus-workspace-previous; }
 
     Mod+Return { spawn "ghostty"; }
+    Mod+Ctrl+Return { spawn "fuzzle"; }
     Mod+B { spawn "firefox"; }
     Mod+E { spawn "dolphin";}
     Mod+C { spawn "code";}

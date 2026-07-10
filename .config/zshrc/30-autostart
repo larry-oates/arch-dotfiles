@@ -31,7 +31,78 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
- 
+
+# -----------------------------------------------------
+# Git worktree helpers
+# -----------------------------------------------------
+
+lg() {
+  local wt_dir=""
+
+  if git rev-parse --git-dir >/dev/null 2>&1; then
+    if [[ "$(git rev-parse --is-bare-repository 2>/dev/null)" == "true" ]] ||
+       [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]]; then
+
+      wt_dir=$(
+        git worktree list --porcelain |
+        awk '
+          /^worktree / { w=$2; is_bare=0 }
+          /^bare$/     { is_bare=1 }
+          /^$/         { if (!is_bare && w) print w }
+        ' |
+        fzf --prompt="worktree: "
+      )
+
+      [[ -n "$wt_dir" ]] || return
+      cd "$wt_dir" || return
+      lazygit "$@"
+    else
+      lazygit "$@"
+    fi
+  else
+    lazygit "$@"
+  fi
+}
+
+wt() {
+    local d="$PWD"
+    local root=""
+
+    while [[ "$d" != "/" ]]; do
+        if [[ -d "$d/.bare" ]]; then
+            root="$d"
+            break
+        elif [[ $(basename "$d") == ".bare" ]]; then
+            root=$(dirname "$d")
+            break
+        fi
+        d=$(dirname "$d")
+    done
+
+    [[ -n "$root" ]] || {
+        echo "Could not find .bare" >&2
+        return 1
+    }
+
+    local branch
+    branch=$(
+    git --git-dir="$root/.bare" \
+        for-each-ref \
+            --format='%(refname:short)' \
+            refs/heads |
+            sort |
+            fzf
+    ) || return 1
+
+    wt_dir="$root/${branch##*/}"
+
+    git --git-dir="$root/.bare" \
+        worktree add \
+        "$wt_dir" \
+        "$branch"
+    cd "$wt_dir"
+}
+
 # -----------------------------------------------------
 # Fastfetch
 # -----------------------------------------------------
@@ -39,6 +110,6 @@ FLAG_FILE="/tmp/.first_terminal_flag_$USER"
 
 if [ ! -f "$FLAG_FILE" ]; then
     touch "$FLAG_FILE"
-    upgrade
+    ~/.config/ml4w/scripts/startmenu.sh
     fastfetch --config examples/24
 fi
