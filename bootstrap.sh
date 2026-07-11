@@ -8,11 +8,11 @@ PRIVATE_DIR="$REPO_ROOT/private"
 echo "🚀 Bootstrapping Arch Linux in [$MODE] mode..."
 
 # 1. Install AUR Helper
-if ! command -v yay &> /dev/null; then
-    echo "📦 Installing yay..."
+if ! command -v paru &> /dev/null; then
+    echo "📦 Installing paru..."
     sudo pacman -S --needed base-devel git
-    git clone https://aur.archlinux.org/yay.git /tmp/yay
-    cd /tmp/yay && makepkg -si --noconfirm && cd "$REPO_ROOT"
+    git clone https://aur.archlinux.org/paru.git /tmp/paru
+    cd /tmp/paru && makepkg -si --noconfirm && cd "$REPO_ROOT"
 fi
 
 # 2. Hardware Detection
@@ -25,7 +25,7 @@ install_list() {
     local NATIVE="$1"
     local AUR="$2"
     [[ -f "$NATIVE" ]] && sudo pacman -S --needed - < "$NATIVE"
-    [[ -f "$AUR" ]] && yay -S --needed - < "$AUR"
+    [[ -f "$AUR" ]] && paru -S --needed - < "$AUR"
 }
 
 # 4. Execution Flow

@@ -43,7 +43,7 @@ _isInstalled() {
 # Check if platform is supported
 case $install_platform in
     arch)
-        aur_helper="$(cat ~/.config/ml4w/settings/aur.sh)" # yay.
+        aur_helper="$(cat ~/.config/ml4w/settings/aur.sh)" # paru.
 	aur_helper_flags=""
 	
 	if gum confirm "DO YOU WANT TO ADD --noconfirm"; then 

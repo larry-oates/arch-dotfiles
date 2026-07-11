@@ -8,9 +8,9 @@
 
 sleep 1
 
-_isInstalledYay() {
+_isInstalledParu() {
     package="$1"
-    check="$(yay -Qs --color always "${package}" | grep "local" | grep "\." | grep "${package} ")"
+    check="$(paru -Qs --color always "${package}" | grep "local" | grep "\." | grep "${package} ")"
     if [ -n "${check}" ]; then
         echo 0 #'0' means 'true' in Bash
         return #true
@@ -52,7 +52,7 @@ elif [[ $shell == "zsh" ]]; then
     echo ":: Shell is now zsh."
 
     # Installing oh-my-posh
-    yay -S oh-my-posh-bin
+    paru -S oh-my-posh-bin
 
     # Installing oh-my-zsh
     if [ ! -d "$HOME/.oh-my-zsh" ]; then

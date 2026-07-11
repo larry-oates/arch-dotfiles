@@ -32,4 +32,4 @@ visual-studio-code-bin
 waybar-lyric
 waypaper
 wlogout
-yay
+paru

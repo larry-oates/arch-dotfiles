@@ -14,7 +14,7 @@ echo "🔍 Scanning system for changes..."
 ALL_NATIVE=$(mktemp)
 ALL_AUR=$(mktemp)
 pacman -Qqen > "$ALL_NATIVE"
-yay -Qqem > "$ALL_AUR"
+paru -Qqem > "$ALL_AUR"
 
 # Function to refresh lists without losing their category
 refresh_list() {

@@ -8,6 +8,17 @@
 #
 # By @krystalsavage
 
+_isInstalledParu() {
+    package="$1"
+    check="$(paru -Qs --color always "${package}" | grep "local" | grep "\." | grep "${package} ")"
+    if [ -n "${check}" ]; then
+        echo 0
+        return
+    fi
+    echo 1
+    return
+}
+
 sleep 1
 clear
 figlet -f smslant "Printers"
@@ -27,7 +38,7 @@ else
     exit
 fi
 
-if [[ $(_isInstalledYay "timeshift") == "0" ]]; then
+if [[ $(_isInstalledParu "timeshift") == "0" ]]; then
     if gum confirm "DO YOU WANT TO CREATE A SNAPSHOT?"; then
         echo
         c=$(gum input --placeholder "Enter a comment for the snapshot...")
@@ -45,7 +56,7 @@ if [[ $(_isInstalledYay "timeshift") == "0" ]]; then
     echo
 fi
 
-yay -S cups cups-pdf cups-filters nss-mdns system-config-printer foomatic-db footmatic-db-engine foomatic-db-nonfree doomatic-db-nonfree-ppds foomatic-db-ppds cups-browsed libusb ipp-usb xdg-utils colord logrotate
+paru -S cups cups-pdf cups-filters nss-mdns system-config-printer foomatic-db footmatic-db-engine foomatic-db-nonfree doomatic-db-nonfree-ppds foomatic-db-ppds cups-browsed libusb ipp-usb xdg-utils colord logrotate
 
 notify-send "Installing printer system complete"
 echo

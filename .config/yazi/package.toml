@@ -15,8 +15,8 @@ hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "598cdb6"
-hash = "c887903a63a2ff520081b6d90a4b3392"
+rev = "1cf48ea"
+hash = "d6f7351ea25a43c9b5f4315fa1e23935"
 
 [[plugin.deps]]
 use = "ourongxing/fast-enter"
