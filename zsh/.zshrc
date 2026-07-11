@@ -35,4 +35,7 @@ if [ -f ~/.zshrc_custom ]; then
     source ~/.zshrc_custom
 fi
 
+# Disable bracketed paste mode
+printf '\e[?2004l'
+
 
