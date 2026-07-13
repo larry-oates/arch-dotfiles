@@ -92,33 +92,37 @@ case $install_platform in
         # ------------------------------------------------------
         # AUR Package Security Review
         # ------------------------------------------------------
-        if [[ $aur_helper_flags == *"--noconfirm"* ]]; then
-            echo
-            echo ":: WARNING: --noconfirm skips PKGBUILD review for AUR packages."
-            echo ":: This is a security risk."
-            if ! gum confirm "Continue with --noconfirm?"; then
-                aur_helper_flags=""
-            fi
-        fi
+        aur_updates=$($aur_helper -Qua 2>/dev/null | awk '{print $1}')
 
-        if [[ ! $aur_helper_flags == *"--noconfirm"* ]]; then
-            if gum confirm "DO YOU WANT TO REVIEW AUR PKGBUILD CHANGES?"; then
-                if [[ $aur_helper == "paru" ]]; then
-                    echo ":: paru will display PKGBUILD diffs during update."
-                else
-                    echo ":: Consider switching to paru for automatic PKGBUILD review."
-                    echo ":: AUR packages with pending updates:"
-                    $aur_helper -Qua 2>/dev/null || echo "None"
+        if [[ -n "$aur_updates" ]]; then
+            if [[ $aur_helper_flags == *"--noconfirm"* ]]; then
+                echo
+                echo ":: WARNING: --noconfirm skips PKGBUILD review for AUR packages."
+                echo ":: This is a security risk."
+                if ! gum confirm "Continue with --noconfirm?"; then
+                    aur_helper_flags=""
+                fi
+            fi
+
+            if [[ ! $aur_helper_flags == *"--noconfirm"* ]]; then
+                if gum confirm "DO YOU WANT TO REVIEW AUR PKGBUILD CHANGES?"; then
+                    if [[ $aur_helper == "paru" ]]; then
+                        echo ":: paru will display PKGBUILD diffs during update."
+                    else
+                        echo ":: Consider switching to paru for automatic PKGBUILD review."
+                        echo ":: AUR packages with pending updates:"
+                        echo "$aur_updates"
+                    fi
                 fi
             fi
         fi
 
-        _scan_pkgbuild() {
-            local pkg="$1" pkgbuild="$2" result
+        _scan_pkgbuild_diff() {
+            local pkg="$1" diff_content="$2" result
             if command -v ollama &>/dev/null; then
-                result=$(ollama run codellama "Analyze this PKGBUILD for security issues: malicious commands, suspicious curl/wget, obfuscated code, unexpected install hooks, checksum issues, typosquatting. PKGBUILD:\n$(cat "$pkgbuild")" 2>/dev/null) && echo "$result" || return 1
+                result=$(ollama run codellama "Analyze this PKGBUILD diff for security issues: malicious commands, suspicious curl/wget, obfuscated code, unexpected install hooks, checksum issues, typosquatting. Focus on what changed. Diff:\n$diff_content" 2>/dev/null) && echo "$result" || return 1
             elif command -v opencode &>/dev/null; then
-                result=$(opencode run --file "$pkgbuild" "Analyze this Arch Linux PKGBUILD for security issues: malicious commands, suspicious curl/wget, obfuscated code, unexpected install hooks, checksum issues, typosquatting." 2>/dev/null) && echo "$result" || return 1
+                result=$(echo "$diff_content" | opencode run "Analyze this Arch Linux PKGBUILD diff for security issues: malicious commands, suspicious curl/wget, obfuscated code, unexpected install hooks, checksum issues, typosquatting. Focus on what changed." 2>/dev/null) && echo "$result" || return 1
             else
                 return 1
             fi
@@ -187,11 +191,10 @@ case $install_platform in
         skip_aur=false
         # Fetch known malicious AUR package lists
         _fetch_malicious_lists
-        if command -v ollama &>/dev/null || command -v opencode &>/dev/null; then
-            if gum confirm "SCAN AUR PKGBUILDS WITH AI (OLLAMA/OPENCODE)?"; then
-                echo ":: Scanning AUR PKGBUILDs for security issues..."
-                aur_updates=$($aur_helper -Qua 2>/dev/null | awk '{print $1}')
-                if [[ -n "$aur_updates" ]]; then
+        if [[ -n "$aur_updates" ]]; then
+            if command -v ollama &>/dev/null || command -v opencode &>/dev/null; then
+                if gum confirm "SCAN AUR PKGBUILDS WITH AI (OLLAMA/OPENCODE)?"; then
+                    echo ":: Scanning AUR PKGBUILDs for security issues..."
                     _noconfirm=""
                     [[ $aur_helper_flags == *"--noconfirm"* ]] && _noconfirm="--noconfirm"
                     aur_pkgs=($aur_updates)
@@ -250,9 +253,12 @@ case $install_platform in
                         # Clone and scan current package (result from bg already collected above)
                         tmpdir=$(mktemp -d)
                         result=""
-                        if git clone --depth=1 "https://aur.archlinux.org/$pkg.git" "$tmpdir/$pkg" 2>/dev/null; then
+                        if git clone --depth=2 "https://aur.archlinux.org/$pkg.git" "$tmpdir/$pkg" 2>/dev/null; then
                             if [[ -f "$tmpdir/$pkg/PKGBUILD" ]]; then
-                                result=$(_scan_pkgbuild "$pkg" "$tmpdir/$pkg/PKGBUILD")
+                                pkg_diff=$(git -C "$tmpdir/$pkg" diff HEAD~1 HEAD 2>/dev/null)
+                                if [[ -n "$pkg_diff" ]]; then
+                                    result=$(_scan_pkgbuild_diff "$pkg" "$pkg_diff")
+                                fi
                             fi
                         fi
 
@@ -261,9 +267,12 @@ case $install_platform in
                             bg_tmpdir=$(mktemp -d)
                             bg_result_file=$(mktemp)
                             (
-                                if git clone --depth=1 "https://aur.archlinux.org/$next_pkg.git" "$bg_tmpdir/$next_pkg" 2>/dev/null; then
+                                if git clone --depth=2 "https://aur.archlinux.org/$next_pkg.git" "$bg_tmpdir/$next_pkg" 2>/dev/null; then
                                     if [[ -f "$bg_tmpdir/$next_pkg/PKGBUILD" ]]; then
-                                        _scan_pkgbuild "$next_pkg" "$bg_tmpdir/$next_pkg/PKGBUILD" > "$bg_result_file" 2>/dev/null
+                                        pkg_diff=$(git -C "$bg_tmpdir/$next_pkg" diff HEAD~1 HEAD 2>/dev/null)
+                                        if [[ -n "$pkg_diff" ]]; then
+                                            _scan_pkgbuild_diff "$next_pkg" "$pkg_diff" > "$bg_result_file" 2>/dev/null
+                                        fi
                                     fi
                                 fi
                             ) &
@@ -308,18 +317,16 @@ case $install_platform in
                     if [[ ${#skip_pkgs[@]} -gt 0 ]]; then
                         skip_aur=true
                     fi
-                else
-                    echo "No AUR updates to scan."
+                    echo ":: AI scan complete."
                 fi
-                echo ":: AI scan complete."
             fi
         fi
 
         _noconfirm=""
         [[ $aur_helper_flags == *"--noconfirm"* ]] && _noconfirm="--noconfirm"
 
+        sudo pacman -Syu $_noconfirm
         if $skip_aur; then
-            sudo pacman -Syu $_noconfirm
             for pkg in $aur_updates; do
                 skip=false
                 for skipped in "${skip_pkgs[@]}"; do

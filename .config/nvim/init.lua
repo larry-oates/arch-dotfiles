@@ -211,6 +211,18 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
+-- Auto-reload files changed on disk
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ 'FocusGained', 'CursorHold', 'CursorHoldI' }, {
+  desc = 'Reload file when changed externally',
+  group = vim.api.nvim_create_augroup('auto-reload', { clear = true }),
+  callback = function()
+    if vim.bo.modified and not vim.bo.readonly then
+      vim.cmd.checktime()
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
