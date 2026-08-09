@@ -1,0 +1,85 @@
+[
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 41
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "if_eq($toggle, 0, set(toggle, 1), set(toggle, 0))",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 30
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "if_eq($toggle, 1, key(a).hold_keys(a), hold_keys(a))",
+        "mapping_type": "key_macro",
+        "macro_key_sleep_ms": 50
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 32
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "if_eq($toggle, 1, key(d).hold_keys(d), hold_keys(d))",
+        "mapping_type": "key_macro",
+        "macro_key_sleep_ms": 50
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 125,
+                "origin_hash": "4df2cf9aa25ee4b85132bd70b3e740eb"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Alt_L",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 56,
+                "origin_hash": "4df2cf9aa25ee4b85132bd70b3e740eb"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Super_L",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 55
+            }
+        ],
+        "target_uinput": "mouse",
+        "output_symbol": "if_eq($toggle, 1, key(BTN_LEFT).hold_keys(BTN_LEFT), hold_keys(BTN_LEFT))",
+        "mapping_type": "key_macro",
+        "macro_key_sleep_ms": 50
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 53
+            }
+        ],
+        "target_uinput": "mouse",
+        "output_symbol": "hold(key(BTN_LEFT))",
+        "mapping_type": "key_macro",
+        "macro_key_sleep_ms": 66
+    }
+]
