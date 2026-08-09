@@ -39,6 +39,7 @@ button {
     border: 3px solid @bordercolor;
 	border-radius: 10px;
     padding:10px;
+    background: rgba(200, 200, 200, 0.3);
 }
 
 .notification-default-action:hover,
