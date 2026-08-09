@@ -5,7 +5,7 @@
     "margin-left": 0,
     "margin-right": 0,
     "spacing": 0,
-    "height": 30,
+    "height": 32,
 
     "include": [
         "~/.config/ml4w/settings/waybar-quicklinks.json",
