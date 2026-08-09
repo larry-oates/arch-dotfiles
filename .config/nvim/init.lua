@@ -190,6 +190,10 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 -- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
+-- Delete next word with Ctrl+Delete, previous word with Ctrl+Backspace (insert mode)
+vim.keymap.set('i', '<C-Delete>', '<C-o>dw', { desc = 'Delete next word', noremap = true, silent = true })
+vim.keymap.set('i', '<C-BS>', '<C-w>', { desc = 'Delete previous word', noremap = true, silent = true })
+
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
